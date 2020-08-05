@@ -21,19 +21,25 @@
 
 #include "luaiconv_module.h"
 #include "luaiconv.h"
+}
 
+std::string Cluaiconv::Utf8toLatin(std::string& in)
+{
+    return iconvpp::Utf8toLatin(in);
+}
+
+std::string Cluaiconv::LatintoUtf8(std::string& in)
+{
+    return iconvpp::LatintoUtf8(in);
+}
 namespace lua_module_luaiconv
 {
     static sol::table require_api(sol::this_state L)
     {
         sol::state_view lua(L);
         sol::table module = lua.create_table();
-        module.set_function("GPrint",&Cluaiconv::GPrint);
-        module.new_usertype<Cluaiconv>(
-            "luaiconv",
-            sol::constructors<Cluaiconv(sol::this_state)>(),
-            "OPrint", &Cluaiconv::OPrint
-            );
+        module.set_function("U2A",&Cluaiconv::Utf8toLatin);
+        module.set_function("A2U",&Cluaiconv::LatintoUtf8);
 
         return module;
     }    

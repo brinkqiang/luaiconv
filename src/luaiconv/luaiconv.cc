@@ -20,6 +20,7 @@
 // SOFTWARE.
 
 #include "luaiconv.h"
+#include "dmiconv.h"
 
 Cluaiconv::Cluaiconv(sol::this_state L)
 : m_oState(L)
@@ -27,12 +28,12 @@ Cluaiconv::Cluaiconv(sol::this_state L)
 
 }
 
-void Cluaiconv::OPrint(const std::string& strInfo)
+std::string Cluaiconv::Utf8toLatin(std::string& in)
 {
-    m_oState["print"].call(strInfo);
+    return iconvpp::Utf8toLatin(in);
 }
 
-void Cluaiconv::GPrint(const std::string& strInfo)
+std::string Cluaiconv::LatintoUtf8(std::string& in)
 {
-    std::cout << strInfo << std::endl;
+    return iconvpp::LatintoUtf8(in);
 }
