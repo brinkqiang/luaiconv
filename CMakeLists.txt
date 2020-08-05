@@ -21,5 +21,9 @@ MESSAGE(STATUS "VERSION: ${LUAICONV_VERSION}")
 ADD_DEFINITIONS(-DUSE_LUAICONV)
 ADD_DEFINITIONS(-DLUA_COMPAT_MODULE -DLUA_COMPAT_APIINTCASTS)
 
-LuaModuleImport("${LUA_MODULE}" "luaiconv" "src/luaiconv")
+INCLUDE_DIRECTORIES(${CMAKE_CURRENT_SOURCE_DIR}/thirdparty/dmiconv/thirdparty/libiconv/win/include)
+LINK_DIRECTORIES(${CMAKE_CURRENT_SOURCE_DIR}/thirdparty/dmiconv/thirdparty/libiconv/win/lib)
+
+ModuleImport("dmiconv" "thirdparty/dmiconv")
+LuaModuleImport("${LUA_MODULE}" "luaiconv" "src/luaiconv" "dmiconv")
 
