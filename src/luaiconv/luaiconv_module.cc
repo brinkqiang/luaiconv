@@ -21,17 +21,8 @@
 
 #include "luaiconv_module.h"
 #include "luaiconv.h"
-}
 
-std::string Cluaiconv::Utf8toLatin(std::string& in)
-{
-    return iconvpp::Utf8toLatin(in);
-}
 
-std::string Cluaiconv::LatintoUtf8(std::string& in)
-{
-    return iconvpp::LatintoUtf8(in);
-}
 namespace lua_module_luaiconv
 {
     static sol::table require_api(sol::this_state L)

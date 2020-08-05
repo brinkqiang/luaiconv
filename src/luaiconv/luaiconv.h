@@ -29,9 +29,9 @@ class Cluaiconv
 public:
     Cluaiconv(sol::this_state L);
 
-    std::string Utf8toLatin(std::string& in);
+    static std::string Utf8toLatin(std::string& in);
 
-    std::string LatintoUtf8(std::string& in);
+    static std::string LatintoUtf8(std::string& in);
 private:
     sol::state_view m_oState;
 };
