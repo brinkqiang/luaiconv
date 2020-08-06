@@ -38,12 +38,12 @@ std::string Cluaiconv::LatintoUtf8(std::string& in)
     return iconvpp::LatintoUtf8(in);
 }
 
-std::string Cluaiconv::Utf8toGb2312(std::string& in)
+std::string Cluaiconv::Utf8toAscii(std::string& in)
 {
-    return iconvpp::Utf8toGb2312(in);
+    return iconvpp::Utf8toAscii(in);
 }
 
-std::string Cluaiconv::Gb2312toUtf8(std::string& in)
+std::string Cluaiconv::AsciitoUtf8(std::string& in)
 {
-    return iconvpp::Gb2312toUtf8(in);
+    return iconvpp::AsciitoUtf8(in);
 }

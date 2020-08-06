@@ -29,10 +29,10 @@ namespace lua_module_luaiconv
     {
         sol::state_view lua(L);
         sol::table module = lua.create_table();
-        module.set_function("U2A",&Cluaiconv::Utf8toLatin);
-        module.set_function("A2U",&Cluaiconv::LatintoUtf8);
-        module.set_function("U2G",&Cluaiconv::Utf8toGB18030);
-        module.set_function("G2U",&Cluaiconv::GB18030toUtf8);
+        module.set_function("U2L",&Cluaiconv::Utf8toLatin);
+        module.set_function("L2U",&Cluaiconv::LatintoUtf8);
+        module.set_function("U2A",&Cluaiconv::Utf8toAscii);
+        module.set_function("A2U",&Cluaiconv::AsciitoUtf8);
         return module;
     }    
 }

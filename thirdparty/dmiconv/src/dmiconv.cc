@@ -106,17 +106,17 @@ std::string iconvpp::LatintoUtf8(std::string& in)
     return std::move(out);
 }
 
-std::string iconvpp::Utf8toGB18030(std::string& in)
+std::string iconvpp::Utf8toAscii(std::string& in)
 {
-    iconvpp::converter conv("GB18030", "UTF-8", true);
+    iconvpp::converter conv("ASCII", "UTF-8", true);
     std::string out;
     conv.convert(in, out);
     return std::move(out);
 }
 
-std::string iconvpp::GB18030toUtf8(std::string& in)
+std::string iconvpp::AsciitoUtf8(std::string& in)
 {
-    iconvpp::converter reconv("UTF-8", "GB18030", true);
+    iconvpp::converter reconv("UTF-8", "ASCII", true);
     std::string out;
     reconv.convert(in, out);
     return std::move(out);
