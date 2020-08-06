@@ -30,8 +30,11 @@ public:
     Cluaiconv(sol::this_state L);
 
     static std::string Utf8toLatin(std::string& in);
-
     static std::string LatintoUtf8(std::string& in);
+
+    static std::string Utf8toGB18030(std::string& in);
+    static std::string GB18030toUtf8(std::string& in);
+
 private:
     sol::state_view m_oState;
 };

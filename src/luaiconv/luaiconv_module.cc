@@ -31,7 +31,8 @@ namespace lua_module_luaiconv
         sol::table module = lua.create_table();
         module.set_function("U2A",&Cluaiconv::Utf8toLatin);
         module.set_function("A2U",&Cluaiconv::LatintoUtf8);
-
+        module.set_function("U2G",&Cluaiconv::Utf8toGB18030);
+        module.set_function("G2U",&Cluaiconv::GB18030toUtf8);
         return module;
     }    
 }

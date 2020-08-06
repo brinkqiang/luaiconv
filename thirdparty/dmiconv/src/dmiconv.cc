@@ -67,7 +67,7 @@ void iconvpp::converter::convert(const std::string& input,
             }
             else
             {
-                check_convert_error();
+                 check_convert_error();
             }
         }
 
@@ -92,7 +92,7 @@ void iconvpp::converter::check_convert_error() const
 
 std::string iconvpp::Utf8toLatin(std::string& in)
 {
-    iconvpp::converter conv("iso-8859-1", "UTF-8");
+    iconvpp::converter conv("iso-8859-1", "UTF-8", true);
     std::string out;
     conv.convert(in, out);
     return std::move(out);
@@ -100,7 +100,23 @@ std::string iconvpp::Utf8toLatin(std::string& in)
 
 std::string iconvpp::LatintoUtf8(std::string& in)
 {
-    iconvpp::converter reconv("UTF-8", "iso-8859-1");
+    iconvpp::converter reconv("UTF-8", "iso-8859-1", true);
+    std::string out;
+    reconv.convert(in, out);
+    return std::move(out);
+}
+
+std::string iconvpp::Utf8toGB18030(std::string& in)
+{
+    iconvpp::converter conv("GB18030", "UTF-8", true);
+    std::string out;
+    conv.convert(in, out);
+    return std::move(out);
+}
+
+std::string iconvpp::GB18030toUtf8(std::string& in)
+{
+    iconvpp::converter reconv("UTF-8", "GB18030", true);
     std::string out;
     reconv.convert(in, out);
     return std::move(out);
