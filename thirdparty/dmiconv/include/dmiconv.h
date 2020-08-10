@@ -17,8 +17,7 @@ class converter
 public:
     converter(const std::string& out_encode,
               const std::string& in_encode,
-              bool ignore_error = false,
-              size_t buf_size = 10240);
+              bool ignore_error = false);
 
     ~converter();
 
@@ -29,7 +28,6 @@ private:
 
     iconv_t iconv_;
     bool ignore_error_;
-    const size_t buf_size_;
 };
 
 std::string Utf8toLatin(std::string& in);
