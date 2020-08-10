@@ -2,15 +2,9 @@
 #include "dmiconv.h"
 
 iconvpp::converter::converter(const std::string& out_encode,
-                              const std::string& in_encode, bool ignore_error /*= false*/,
-                              size_t buf_size /*= 10240*/) : ignore_error_(ignore_error),
-    buf_size_(buf_size)
+                              const std::string& in_encode, bool ignore_error /*= false*/)
+                              : ignore_error_(ignore_error)
 {
-    if (buf_size == 0)
-    {
-        throw std::runtime_error("buffer size must be greater than zero");
-    }
-
     iconv_t conv = ::iconv_open(out_encode.c_str(), in_encode.c_str());
 
     if (conv == (iconv_t)-1)
@@ -39,7 +33,7 @@ void iconvpp::converter::convert(const std::string& input,
     char* src_ptr = &in_buf[0];
     size_t src_size = input.size();
 
-    std::vector<char> buf(buf_size_);
+    std::vector<char> buf(src_size * 6);
     std::string dst;
 
     while (0 < src_size)
