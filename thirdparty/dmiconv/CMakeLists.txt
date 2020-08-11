@@ -10,6 +10,7 @@ ModuleSetCompileOptions()
 ADD_DEFINITIONS(-DUSE_DMICONV)
 
 ModuleImport("dmformat" "thirdparty/dmformat")
+ModuleImport("dmchardet" "thirdparty/dmchardet")
 
 IF (WIN32)
     INCLUDE_DIRECTORIES(${CMAKE_CURRENT_SOURCE_DIR}/src/windows)
@@ -78,7 +79,7 @@ ${CMAKE_CURRENT_SOURCE_DIR}/test/*.h)
 
 IF (WIN32)
     ADD_LIBRARY(dmiconv ${DMICONV_SOURCES})
-    TARGET_LINK_LIBRARIES(dmiconv ${ICONV_LIBRARIES})
+    TARGET_LINK_LIBRARIES(dmiconv ${ICONV_LIBRARIES} dmchardet)
 
     ADD_EXECUTABLE(dmiconvtest ${DMICONVTEST_SOURCES})
     TARGET_LINK_LIBRARIES(dmiconvtest dmiconv ${ICONV_LIBRARIES})
@@ -101,7 +102,7 @@ ELSE(WIN32)
     ADD_DEFINITIONS(-DLIBICONV_PLUG)
 
     ADD_LIBRARY(dmiconv ${DMICONV_SOURCES})
-    TARGET_LINK_LIBRARIES(dmiconv ${ICONV_LIBRARIES})
+    TARGET_LINK_LIBRARIES(dmiconv ${ICONV_LIBRARIES} dmchardet)
 
     ADD_EXECUTABLE(dmiconvtest ${DMICONVTEST_SOURCES})
     TARGET_LINK_LIBRARIES(dmiconvtest dmiconv ${ICONV_LIBRARIES})

@@ -1,9 +1,10 @@
 
 #include "dmiconv.h"
+#include "uchardet.h"
 
 iconvpp::converter::converter(const std::string& out_encode,
                               const std::string& in_encode, bool ignore_error /*= false*/)
-                              : ignore_error_(ignore_error)
+    : ignore_error_(ignore_error)
 {
     iconv_t conv = ::iconv_open(out_encode.c_str(), in_encode.c_str());
 
@@ -61,7 +62,7 @@ void iconvpp::converter::convert(const std::string& input,
             }
             else
             {
-                 check_convert_error();
+                check_convert_error();
             }
         }
 
@@ -84,7 +85,43 @@ void iconvpp::converter::check_convert_error() const
     }
 }
 
-std::string iconvpp::Utf8toLatin(std::string& in)
+std::string detect::iconvpp(std::string& input)
+{
+    uchardet_t  handle = uchardet_new();
+    char* charset;
+    char        buffer[BUFFER_SIZE];
+    int         i;
+
+    while (!feof(fp))
+    {
+        size_t len = fread(buffer, 1, BUFFER_SIZE, fp);
+        int retval = uchardet_handle_data(handle, buffer, len);
+
+        if (retval != 0)
+        {
+            fprintf(stderr,
+                    "uchardet-tests: handle data error.\n");
+            exit(1);
+        }
+    }
+
+    uchardet_data_end(handle);
+
+    charset = strdup(uchardet_get_charset(handle));
+
+    for (i = 0; charset[i]; i++)
+    {
+        /* Our test files are lowercase. */
+        charset[i] = tolower(charset[i]);
+    }
+
+    uchardet_delete(handle);
+
+    return charset;
+}
+
+
+std::string iconvpp::toLatin(std::string& in)
 {
     iconvpp::converter conv("iso-8859-1", "UTF-8", true);
     std::string out;
@@ -92,7 +129,7 @@ std::string iconvpp::Utf8toLatin(std::string& in)
     return std::move(out);
 }
 
-std::string iconvpp::LatintoUtf8(std::string& in)
+std::string iconvpp::toUtf8(std::string& in)
 {
     iconvpp::converter reconv("UTF-8", "iso-8859-1", true);
     std::string out;
@@ -100,18 +137,10 @@ std::string iconvpp::LatintoUtf8(std::string& in)
     return std::move(out);
 }
 
-std::string iconvpp::Utf8toAscii(std::string& in)
+std::string iconvpp::toAscii(std::string& in)
 {
     iconvpp::converter conv("ASCII", "UTF-8", true);
     std::string out;
     conv.convert(in, out);
-    return std::move(out);
-}
-
-std::string iconvpp::AsciitoUtf8(std::string& in)
-{
-    iconvpp::converter reconv("UTF-8", "ASCII", true);
-    std::string out;
-    reconv.convert(in, out);
     return std::move(out);
 }
