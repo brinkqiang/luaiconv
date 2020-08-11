@@ -82,7 +82,7 @@ IF (WIN32)
     TARGET_LINK_LIBRARIES(dmiconv ${ICONV_LIBRARIES} dmchardet)
 
     ADD_EXECUTABLE(dmiconvtest ${DMICONVTEST_SOURCES})
-    TARGET_LINK_LIBRARIES(dmiconvtest dmiconv ${ICONV_LIBRARIES})
+    TARGET_LINK_LIBRARIES(dmiconvtest dmiconv ${ICONV_LIBRARIES} dmchardet)
 
     ADD_CUSTOM_COMMAND(
 	TARGET dmiconvtest
@@ -105,5 +105,5 @@ ELSE(WIN32)
     TARGET_LINK_LIBRARIES(dmiconv ${ICONV_LIBRARIES} dmchardet)
 
     ADD_EXECUTABLE(dmiconvtest ${DMICONVTEST_SOURCES})
-    TARGET_LINK_LIBRARIES(dmiconvtest dmiconv ${ICONV_LIBRARIES})
+    TARGET_LINK_LIBRARIES(dmiconvtest dmiconv ${ICONV_LIBRARIES} dmchardet)
 ENDIF(WIN32)

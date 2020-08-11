@@ -2,6 +2,6 @@
 
 local luaiconv = require("luaiconv")
 
-print(luaiconv.U2A(luaiconv.A2U("shijienimhao!")))
+print(luaiconv.L2U("世界人民你们好nihao!"))
 
-print(luaiconv.U2L(luaiconv.L2U("世界人民你们好!")))
+print(luaiconv.U2L(luaiconv.L2U("世界人民你们好nihao!")))

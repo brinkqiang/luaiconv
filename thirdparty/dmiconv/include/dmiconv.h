@@ -30,6 +30,8 @@ private:
     bool ignore_error_;
 };
 
+std::string detect(std::string& input);
+
 std::string Utf8toLatin(std::string& in);
 
 std::string LatintoUtf8(std::string& in);
@@ -37,6 +39,9 @@ std::string LatintoUtf8(std::string& in);
 std::string Utf8toAscii(std::string& in);
 std::string AsciitoUtf8(std::string& in);
 
+std::string toLatin(std::string& in);
+std::string toUtf8(std::string& in);
+std::string toAscii(std::string& in);
 }  // namespace iconvpp
 
 #endif // __DMICONV_H_INCLUDE__

@@ -35,6 +35,9 @@ public:
     static std::string Utf8toAscii(std::string& in);
     static std::string AsciitoUtf8(std::string& in);
 
+    static std::string toLatin(std::string& in);
+    static std::string toUtf8(std::string& in);
+    static std::string toAscii(std::string& in);
 private:
     sol::state_view m_oState;
 };

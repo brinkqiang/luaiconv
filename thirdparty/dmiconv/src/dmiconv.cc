@@ -85,31 +85,25 @@ void iconvpp::converter::check_convert_error() const
     }
 }
 
-std::string detect::iconvpp(std::string& input)
+std::string iconvpp::detect(std::string& input)
 {
     uchardet_t  handle = uchardet_new();
     char* charset;
-    char        buffer[BUFFER_SIZE];
-    int         i;
+    size_t len = input.size();
+    int retval = uchardet_handle_data(handle, input.data(), len);
 
-    while (!feof(fp))
+    if (retval != 0)
     {
-        size_t len = fread(buffer, 1, BUFFER_SIZE, fp);
-        int retval = uchardet_handle_data(handle, buffer, len);
-
-        if (retval != 0)
-        {
-            fprintf(stderr,
-                    "uchardet-tests: handle data error.\n");
-            exit(1);
-        }
+        fprintf(stderr,
+                "uchardet-tests: handle data error.\n");
+        exit(1);
     }
 
     uchardet_data_end(handle);
 
     charset = strdup(uchardet_get_charset(handle));
 
-    for (i = 0; charset[i]; i++)
+    for (int i = 0; charset[i]; i++)
     {
         /* Our test files are lowercase. */
         charset[i] = tolower(charset[i]);
@@ -123,7 +117,7 @@ std::string detect::iconvpp(std::string& input)
 
 std::string iconvpp::toLatin(std::string& in)
 {
-    iconvpp::converter conv("iso-8859-1", "UTF-8", true);
+    iconvpp::converter conv("iso-8859-1", detect(in), true);
     std::string out;
     conv.convert(in, out);
     return std::move(out);
@@ -131,7 +125,7 @@ std::string iconvpp::toLatin(std::string& in)
 
 std::string iconvpp::toUtf8(std::string& in)
 {
-    iconvpp::converter reconv("UTF-8", "iso-8859-1", true);
+    iconvpp::converter reconv("UTF-8", detect(in), true);
     std::string out;
     reconv.convert(in, out);
     return std::move(out);
@@ -139,7 +133,7 @@ std::string iconvpp::toUtf8(std::string& in)
 
 std::string iconvpp::toAscii(std::string& in)
 {
-    iconvpp::converter conv("ASCII", "UTF-8", true);
+    iconvpp::converter conv("ASCII", detect(in), true);
     std::string out;
     conv.convert(in, out);
     return std::move(out);
