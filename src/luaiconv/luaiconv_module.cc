@@ -33,8 +33,8 @@ static sol::table require_api(sol::this_state L)
     module.set_function("toLatin", &Cluaiconv::toLatin);
     module.set_function("toUtf8", &Cluaiconv::toUtf8);
     module.set_function("toAscii", &Cluaiconv::toAscii);
-    module.set_function("toGb2310", &Cluaiconv::toGb2310);
-
+    module.set_function("toGbk", &Cluaiconv::toGbk);
+    module.set_function("toGb18030", &Cluaiconv::toGb18030);
 
     return module;
 }
