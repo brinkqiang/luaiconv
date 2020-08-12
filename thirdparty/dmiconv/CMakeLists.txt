@@ -11,6 +11,7 @@ ADD_DEFINITIONS(-DUSE_DMICONV)
 
 ModuleImport("dmformat" "thirdparty/dmformat")
 ModuleImport("dmchardet" "thirdparty/dmchardet")
+ModuleInclude("libiconv" "thirdparty/libiconv")
 
 IF (WIN32)
     INCLUDE_DIRECTORIES(${CMAKE_CURRENT_SOURCE_DIR}/src/windows)
@@ -35,10 +36,10 @@ IF (WIN32)
 ELSE(WIN32)
     MESSAGE(STATUS "Looking for libiconv")
     SET(ICONV_VERSION_STRING "1.11.1")
-    SET(ICONV_INCLUDE_DIRS "${CMAKE_CURRENT_SOURCE_DIR}/thirdparty/libiconv/unix/include")
+    SET(ICONV_INCLUDE_DIRS "${CMAKE_CURRENT_SOURCE_DIR}/thirdparty/libiconv/include")
     SET(ICONV_LIBRARIES "libiconv" "libcharset")
-    LINK_DIRECTORIES(${CMAKE_CURRENT_SOURCE_DIR}/thirdparty/libiconv/unix/lib)
-    LINK_DIRECTORIES(${CMAKE_CURRENT_SOURCE_DIR}/thirdparty/libiconv/unix/lib/.libs)	
+    LINK_DIRECTORIES(${CMAKE_CURRENT_SOURCE_DIR}/thirdparty/libiconv/libcharset/lib/.libs)
+    LINK_DIRECTORIES(${CMAKE_CURRENT_SOURCE_DIR}/thirdparty/libiconv/lib/.libs)	
     INCLUDE_DIRECTORIES(${ICONV_INCLUDE_DIRS})
 ENDIF(WIN32)
 
@@ -96,11 +97,13 @@ ELSE(WIN32)
 
     ADD_EXECUTABLE(dmiconvtest ${DMICONVTEST_SOURCES})
     TARGET_LINK_LIBRARIES(dmiconvtest dmiconv ${ICONV_LIBRARIES} dmchardet)
+    
+    ModuleConfigure("dmiconv" "${CMAKE_CURRENT_SOURCE_DIR}/thirdparty/libiconv")
+
+    ADD_CUSTOM_COMMAND(TARGET dmiconv_configure POST_BUILD
+        COMMAND ${CMAKE_COMMAND} -E copy_if_different ${CMAKE_CURRENT_SOURCE_DIR}/thirdparty/libiconv/lib/.libs/libiconv.so.2.6.1 $<TARGET_FILE_DIR:dmiconv>/libiconv.so
+        )
+    ADD_CUSTOM_COMMAND(TARGET dmiconv_configure POST_BUILD
+        COMMAND ${CMAKE_COMMAND} -E copy_if_different ${CMAKE_CURRENT_SOURCE_DIR}/thirdparty/libiconv/libcharset/lib/.libs/libcharset.so.1.0.0 $<TARGET_FILE_DIR:dmiconv>/libcharset.so)
+
 ENDIF(WIN32)
-
-FILE(GLOB LibFiles ${CMAKE_CURRENT_SOURCE_DIR}/thirdparty/libiconv/unix/lib/.libs/*.so)
-
-FOREACH(LibFile ${LibFiles})
-    ADD_CUSTOM_COMMAND(TARGET dmiconv PRE_BUILD
-        COMMAND ${CMAKE_COMMAND} -E copy ${LibFile} $<TARGET_FILE_DIR:dmiconv>)
-ENDFOREACH()

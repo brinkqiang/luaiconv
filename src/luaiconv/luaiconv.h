@@ -29,6 +29,7 @@ class Cluaiconv
 public:
     Cluaiconv(sol::this_state L);
 
+    static std::string detect(std::string& in);
     static std::string toLatin(std::string& in);
     static std::string toUtf8(std::string& in);
     static std::string toAscii(std::string& in);
