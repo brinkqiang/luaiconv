@@ -98,7 +98,7 @@ ELSE(WIN32)
     ADD_EXECUTABLE(dmiconvtest ${DMICONVTEST_SOURCES})
     TARGET_LINK_LIBRARIES(dmiconvtest dmiconv ${ICONV_LIBRARIES} dmchardet)
     
-    ModuleCommand("dmiconv" "${CMAKE_CURRENT_SOURCE_DIR}/thirdparty/libiconv" "./configure && make")
+    ModuleCommand("dmiconv" "${CMAKE_CURRENT_SOURCE_DIR}/thirdparty/libiconv" "cd ${CMAKE_CURRENT_SOURCE_DIR}/thirdparty/libiconv && ./configure && make")
 
     ADD_CUSTOM_COMMAND(
         TARGET dmiconv
