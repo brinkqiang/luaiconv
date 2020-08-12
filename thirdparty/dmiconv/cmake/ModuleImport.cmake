@@ -289,3 +289,27 @@ macro(ModuleConfigure ModuleName ModulePath)
 
     ADD_DEPENDENCIES(${ModuleName} ${ModuleName}_configure)
 endmacro(ModuleConfigure)
+
+macro(ModuleCommand ModuleName ModulePath CommandLine)
+    IF (WIN32)
+        ADD_CUSTOM_TARGET(
+            ${ModuleName}_configure
+            COMMAND ${CommandLine}
+            WORKING_DIRECTORY ${ModulePath}
+            )
+    ELSEIF (APPLE)
+        ADD_CUSTOM_TARGET(
+            ${ModuleName}_configure
+            COMMAND ${CommandLine}
+            WORKING_DIRECTORY ${ModulePath}
+            )
+    ELSEIF (UNIX)
+        ADD_CUSTOM_TARGET(
+            ${ModuleName}_configure
+            COMMAND ${CommandLine}
+            WORKING_DIRECTORY ${ModulePath}
+            )
+    ENDIF()
+
+    ADD_DEPENDENCIES(${ModuleName} ${ModuleName}_Command)
+endmacro(ModuleCommand)
