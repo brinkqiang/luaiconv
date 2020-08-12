@@ -100,10 +100,10 @@ ELSE(WIN32)
     
     ModuleConfigure("dmiconv" "${CMAKE_CURRENT_SOURCE_DIR}/thirdparty/libiconv")
 
-    ADD_CUSTOM_COMMAND(TARGET dmiconv_configure POST_BUILD
+    ADD_CUSTOM_COMMAND(TARGET dmiconv POST_BUILD
         COMMAND ${CMAKE_COMMAND} -E copy_if_different ${CMAKE_CURRENT_SOURCE_DIR}/thirdparty/libiconv/lib/.libs/libiconv.so.2.6.1 $<TARGET_FILE_DIR:dmiconv>/libiconv.so
         )
-    ADD_CUSTOM_COMMAND(TARGET dmiconv_configure POST_BUILD
+    ADD_CUSTOM_COMMAND(TARGET dmiconv POST_BUILD
         COMMAND ${CMAKE_COMMAND} -E copy_if_different ${CMAKE_CURRENT_SOURCE_DIR}/thirdparty/libiconv/libcharset/lib/.libs/libcharset.so.1.0.0 $<TARGET_FILE_DIR:dmiconv>/libcharset.so)
 
 ENDIF(WIN32)
