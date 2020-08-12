@@ -28,14 +28,6 @@ static sol::table require_api(sol::this_state L)
 {
     sol::state_view lua(L);
     sol::table module = lua.create_table();
-    module.set_function("U2L",
-                        sol::resolve<std::string(std::string&)>(&Cluaiconv::Utf8toLatin));
-    module.set_function("L2U",
-                        sol::resolve<std::string(std::string&)>(&Cluaiconv::LatintoUtf8));
-    module.set_function("U2A",
-                        sol::resolve<std::string(std::string&)>(&Cluaiconv::Utf8toAscii));
-    module.set_function("A2U",
-                        sol::resolve<std::string(std::string&)>(&Cluaiconv::AsciitoUtf8));
 
     module.set_function("toLatin",
                         sol::resolve<std::string(std::string&)>(&Cluaiconv::toLatin));
