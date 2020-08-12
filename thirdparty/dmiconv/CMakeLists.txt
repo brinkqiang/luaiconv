@@ -101,10 +101,10 @@ ELSE(WIN32)
     ADD_CUSTOM_TARGET(
         dmiconv_configure
         COMMAND ./configure && make
-        WORKING_DIRECTORY ${ModulePath}
+        WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/thirdparty/libiconv
         )
 
-    ADD_DEPENDENCIES(${ModuleName} dmiconv_configure)
+    ADD_DEPENDENCIES(dmiconv dmiconv_configure)
 
     ADD_CUSTOM_COMMAND(
         TARGET dmiconv
