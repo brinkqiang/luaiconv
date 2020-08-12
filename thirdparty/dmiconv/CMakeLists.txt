@@ -101,7 +101,10 @@ ELSE(WIN32)
     ADD_CUSTOM_COMMAND(
         TARGET dmiconv
         PRE_BUILD
-        COMMAND ./configure && make
+        COMMAND ./configure
+        COMMAND make
+        COMMAND make install
+        COMMAND echo "finish"
         WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/thirdparty/libiconv
         )
 
