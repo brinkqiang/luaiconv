@@ -34,12 +34,12 @@ private:
     sol::state_view m_oState;
 };
 
-static std::string detect(std::string& in);
-static std::string toLatin(std::string& in);
-static std::string toUtf8(std::string& in);
-static std::string toAscii(std::string& in);
+std::string detect(std::string& in);
+std::string toLatin(std::string& in);
+std::string toUtf8(std::string& in);
+std::string toAscii(std::string& in);
 
-static std::string toGbk(std::string& in);
-static std::string toGb18030(std::string& in);
+std::string toGbk(std::string& in);
+std::string toGb18030(std::string& in);
 
 #endif // __LUAICONV_H__
