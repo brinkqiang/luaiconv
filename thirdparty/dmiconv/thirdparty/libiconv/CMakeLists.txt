@@ -1,0 +1,29 @@
+cmake_minimum_required(VERSION 2.8)
+
+PROJECT(libiconv)
+
+LIST(APPEND CMAKE_MODULE_PATH ${CMAKE_CURRENT_SOURCE_DIR}/cmake)
+INCLUDE(cmake/ModuleImport.cmake)
+INCLUDE(cmake/ModuleCompileOptions.cmake)
+ModuleSetCompileOptions()
+
+IF (WIN32)
+   SET(ICONV_VERSION_STRING "1.11.1")
+   SET(ICONV_INCLUDE_DIRS "${CMAKE_CURRENT_SOURCE_DIR}/win/include")
+   SET(ICONV_LIBRARIES "iconv" "charset")
+
+   INCLUDE_DIRECTORIES(${ICONV_INCLUDE_DIRS})
+   LINK_DIRECTORIES(${CMAKE_CURRENT_SOURCE_DIR}/win/lib)
+
+   MESSAGE(STATUS "Found Iconv version: ${ICONV_VERSION_STRING}")
+   MESSAGE(STATUS "Using Iconv include dir(s): ${ICONV_INCLUDE_DIRS}")
+   MESSAGE(STATUS "Using Iconv lib(s): ${ICONV_LIBRARIES}")
+ELSE(WIN32)
+    MESSAGE(STATUS "Looking for libiconv")
+    SET(ICONV_VERSION_STRING "1.11.1")
+    SET(ICONV_INCLUDE_DIRS "${CMAKE_CURRENT_SOURCE_DIR}/include")
+    SET(ICONV_LIBRARIES "libiconv" "libcharset")
+    LINK_DIRECTORIES(${CMAKE_CURRENT_SOURCE_DIR}/libiconv/libcharset/lib/.libs)
+    LINK_DIRECTORIES(${CMAKE_CURRENT_SOURCE_DIR}/libiconv/lib/.libs)	
+    INCLUDE_DIRECTORIES(${ICONV_INCLUDE_DIRS})
+ENDIF(WIN32)
