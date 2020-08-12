@@ -29,15 +29,13 @@ static sol::table require_api(sol::this_state L)
     sol::state_view lua(L);
     sol::table module = lua.create_table();
 
-    module.set_function("detect",
-                        sol::resolve<std::string(std::string&)>(&Cluaiconv::detect));
+    module.set_function("detect", &Cluaiconv::detect);
+    module.set_function("toLatin", &Cluaiconv::toLatin);
+    module.set_function("toUtf8", &Cluaiconv::toUtf8);
+    module.set_function("toAscii", &Cluaiconv::toAscii);
+    module.set_function("toGb2310", &Cluaiconv::toGb2310);
 
-    module.set_function("toLatin",
-                        sol::resolve<std::string(std::string&)>(&Cluaiconv::toLatin));
-    module.set_function("toUtf8",
-                        sol::resolve<std::string(std::string&)>(&Cluaiconv::toUtf8));
-    module.set_function("toAscii",
-                        sol::resolve<std::string(std::string&)>(&Cluaiconv::toAscii));
+
     return module;
 }
 }

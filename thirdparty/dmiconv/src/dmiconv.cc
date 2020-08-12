@@ -139,3 +139,19 @@ std::string iconvpp::toAscii(std::string& in)
     conv.convert(in, out);
     return std::move(out);
 }
+
+std::string iconvpp::toGbk(std::string& in)
+{
+    iconvpp::converter conv("GBK", detect(in), true);
+    std::string out;
+    conv.convert(in, out);
+    return std::move(out);
+}
+
+std::string iconvpp::toGb18030(std::string& in)
+{
+    iconvpp::converter conv("GB18030", detect(in), true);
+    std::string out;
+    conv.convert(in, out);
+    return std::move(out);
+}

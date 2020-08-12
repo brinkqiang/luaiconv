@@ -42,7 +42,18 @@ std::string Cluaiconv::toUtf8(std::string& in)
 {
     return iconvpp::toUtf8(in);
 }
+
 std::string Cluaiconv::toAscii(std::string& in)
 {
     return std::move(iconvpp::toAscii(in));
+}
+
+std::string Cluaiconv::toGbk(std::string& in)
+{
+    return std::move(iconvpp::toGbk(in));
+}
+
+std::string Cluaiconv::toGb18030(std::string& in)
+{
+    return std::move(iconvpp::toGb18030(in));
 }
