@@ -293,23 +293,23 @@ endmacro(ModuleConfigure)
 macro(ModuleCommand ModuleName ModulePath CommandLine)
     IF (WIN32)
         ADD_CUSTOM_TARGET(
-            ${ModuleName}_configure
+            ${ModuleName}_command
             COMMAND ${CommandLine}
             WORKING_DIRECTORY ${ModulePath}
             )
     ELSEIF (APPLE)
         ADD_CUSTOM_TARGET(
-            ${ModuleName}_configure
+            ${ModuleName}_command
             COMMAND ${CommandLine}
             WORKING_DIRECTORY ${ModulePath}
             )
     ELSEIF (UNIX)
         ADD_CUSTOM_TARGET(
-            ${ModuleName}_configure
+            ${ModuleName}_command
             COMMAND ${CommandLine}
             WORKING_DIRECTORY ${ModulePath}
             )
     ENDIF()
 
-    ADD_DEPENDENCIES(${ModuleName} ${ModuleName}_Command)
+    ADD_DEPENDENCIES(${ModuleName} ${ModuleName}_command)
 endmacro(ModuleCommand)
