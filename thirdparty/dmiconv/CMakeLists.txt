@@ -100,7 +100,8 @@ ELSE(WIN32)
 
     ADD_CUSTOM_TARGET(
         dmiconv_configure
-        COMMAND ./configure && make
+        COMMAND ./configure
+        COMMAND make
         WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/thirdparty/libiconv
         )
 
