@@ -291,6 +291,8 @@ macro(ModuleConfigure ModuleName ModulePath)
 endmacro(ModuleConfigure)
 
 macro(ModuleCommand ModuleName ModulePath CommandLine)
+    MESSAGE(STATUS "ModuleCommand ${ModuleName} ${ModulePath} ${CommandLine}")
+
     IF (WIN32)
         ADD_CUSTOM_TARGET(
             ${ModuleName}_command
