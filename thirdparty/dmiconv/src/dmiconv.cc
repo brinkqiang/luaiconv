@@ -1,6 +1,7 @@
 
 #include "dmiconv.h"
 #include "uchardet.h"
+#include <string.h>
 
 iconvpp::converter::converter(const std::string& out_encode,
                               const std::string& in_encode, bool ignore_error /*= false*/)
