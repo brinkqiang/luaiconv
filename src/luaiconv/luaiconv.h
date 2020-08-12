@@ -22,6 +22,8 @@
 #ifndef __LUAICONV_H__
 #define __LUAICONV_H__
 
+#include <string>
+
 std::string detect(std::string& in);
 std::string toLatin(std::string& in);
 std::string toUtf8(std::string& in);
