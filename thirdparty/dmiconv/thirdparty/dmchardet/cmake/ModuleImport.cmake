@@ -286,4 +286,6 @@ macro(ModuleConfigure ModuleName)
             WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
             )
     ENDIF()
+
+    ADD_DEPENDENCIES(${ModuleName} ${ModuleName}_configure)
 endmacro(ModuleConfigure)

@@ -30,22 +30,22 @@ Cluaiconv::Cluaiconv(sol::this_state L)
 
 std::string Cluaiconv::Utf8toLatin(std::string& in)
 {
-    return iconvpp::Utf8toLatin(in);
+    return iconvpp::toLatin(in);
 }
 
 std::string Cluaiconv::LatintoUtf8(std::string& in)
 {
-    return iconvpp::LatintoUtf8(in);
+    return iconvpp::toUtf8(in);
 }
 
 std::string Cluaiconv::Utf8toAscii(std::string& in)
 {
-    return iconvpp::Utf8toAscii(in);
+    return iconvpp::toAscii(in);
 }
 
 std::string Cluaiconv::AsciitoUtf8(std::string& in)
 {
-    return iconvpp::AsciitoUtf8(in);
+    return iconvpp::toUtf8(in);
 }
 
 std::string Cluaiconv::toLatin(std::string& in)

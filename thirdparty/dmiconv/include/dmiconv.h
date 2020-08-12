@@ -8,7 +8,7 @@
 #include <stdexcept>
 #include <string>
 #include <vector>
-
+#include "dmos.h"
 namespace iconvpp
 {
 
@@ -31,13 +31,6 @@ private:
 };
 
 std::string detect(std::string& input);
-
-std::string Utf8toLatin(std::string& in);
-
-std::string LatintoUtf8(std::string& in);
-
-std::string Utf8toAscii(std::string& in);
-std::string AsciitoUtf8(std::string& in);
 
 std::string toLatin(std::string& in);
 std::string toUtf8(std::string& in);
