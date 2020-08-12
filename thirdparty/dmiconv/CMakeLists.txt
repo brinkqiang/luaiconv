@@ -103,7 +103,6 @@ ELSE(WIN32)
         PRE_BUILD
         COMMAND ./configure
         COMMAND make
-        COMMAND make install
         COMMAND echo "finish"
         WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/thirdparty/libiconv
         )
