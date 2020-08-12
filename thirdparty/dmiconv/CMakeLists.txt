@@ -11,7 +11,7 @@ ADD_DEFINITIONS(-DUSE_DMICONV)
 
 ModuleImport("dmformat" "thirdparty/dmformat")
 ModuleImport("dmchardet" "thirdparty/dmchardet")
-ModuleInclude("libiconv" "thirdparty/libiconv")
+ModuleImport("libiconv" "thirdparty/libiconv")
 
 IF (WIN32)
     INCLUDE_DIRECTORIES(${CMAKE_CURRENT_SOURCE_DIR}/src/windows)
