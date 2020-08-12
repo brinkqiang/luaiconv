@@ -21,6 +21,7 @@
 
 #include "luaiconv_module.h"
 #include "luaiconv.h"
+#include "sol.hpp"
 
 namespace lua_module_luaiconv
 {

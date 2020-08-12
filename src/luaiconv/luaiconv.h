@@ -22,18 +22,6 @@
 #ifndef __LUAICONV_H__
 #define __LUAICONV_H__
 
-#include "sol.hpp"
-
-class Cluaiconv
-{
-public:
-    Cluaiconv(sol::this_state L);
-
-
-private:
-    sol::state_view m_oState;
-};
-
 std::string detect(std::string& in);
 std::string toLatin(std::string& in);
 std::string toUtf8(std::string& in);

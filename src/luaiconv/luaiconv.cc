@@ -22,12 +22,6 @@
 #include "luaiconv.h"
 #include "dmiconv.h"
 
-Cluaiconv::Cluaiconv(sol::this_state L)
-    : m_oState(L)
-{
-
-}
-
 std::string detect(std::string& in)
 {
     return std::move(iconvpp::detect(in));
