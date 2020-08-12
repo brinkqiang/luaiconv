@@ -30,9 +30,9 @@ extern "C" {
 #include "lualib.h"
 #include "lauxlib.h"
 
-LUA_API int luaopen_luaiconv(lua_State* L);
+LUAMOD_API int luaopen_luaiconv(lua_State* L);
 
-LUA_API int require_luaiconv(lua_State* L);
+LUAMOD_API int require_luaiconv(lua_State* L);
 
 #ifdef __cplusplus
 }

@@ -41,12 +41,12 @@ static sol::table require_api(sol::this_state L)
 }
 }
 
-LUA_API int luaopen_luaiconv(lua_State* L)
+LUAMOD_API int luaopen_luaiconv(lua_State* L)
 {
     return sol::stack::call_lua(L, 1, lua_module_luaiconv::require_api);
 }
 
-LUA_API int require_luaiconv(lua_State* L)
+LUAMOD_API int require_luaiconv(lua_State* L)
 {
     luaL_requiref(L, "luaiconv", luaopen_luaiconv, 0);
     printf("lua module: require luaiconv\n");
