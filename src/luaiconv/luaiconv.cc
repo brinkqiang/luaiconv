@@ -28,32 +28,32 @@ Cluaiconv::Cluaiconv(sol::this_state L)
 
 }
 
-std::string Cluaiconv::detect(std::string& in)
+std::string detect(std::string& in)
 {
     return std::move(iconvpp::detect(in));
 }
 
-std::string Cluaiconv::toLatin(std::string& in)
+std::string toLatin(std::string& in)
 {
     return std::move(iconvpp::toLatin(in));
 }
 
-std::string Cluaiconv::toUtf8(std::string& in)
+std::string toUtf8(std::string& in)
 {
     return iconvpp::toUtf8(in);
 }
 
-std::string Cluaiconv::toAscii(std::string& in)
+std::string toAscii(std::string& in)
 {
     return std::move(iconvpp::toAscii(in));
 }
 
-std::string Cluaiconv::toGbk(std::string& in)
+std::string toGbk(std::string& in)
 {
     return std::move(iconvpp::toGbk(in));
 }
 
-std::string Cluaiconv::toGb18030(std::string& in)
+std::string toGb18030(std::string& in)
 {
     return std::move(iconvpp::toGb18030(in));
 }
