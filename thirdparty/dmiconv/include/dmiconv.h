@@ -32,7 +32,7 @@ private:
 
 std::string detect(const std::string& input);
 
-std::string convert(const std::string& out_encode, const std::string& in_encode, const std::string& in)
+std::string convert(const std::string& out_encode, const std::string& in_encode, const std::string& in);
 
 std::string toLatin(const std::string& in);
 std::string toUtf8(const std::string& in);
