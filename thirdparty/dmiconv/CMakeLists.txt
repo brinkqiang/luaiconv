@@ -38,8 +38,8 @@ ELSE(WIN32)
     SET(ICONV_VERSION_STRING "1.11.1")
     SET(ICONV_INCLUDE_DIRS "${CMAKE_CURRENT_SOURCE_DIR}/thirdparty/libiconv/include")
     #SET(ICONV_LIBRARIES "iconv" "charset")
-    LINK_DIRECTORIES(${CMAKE_CURRENT_SOURCE_DIR}/thirdparty/libiconv/libcharset/lib/.libs)
-    LINK_DIRECTORIES(${CMAKE_CURRENT_SOURCE_DIR}/thirdparty/libiconv/lib/.libs)	
+    #LINK_DIRECTORIES(${CMAKE_CURRENT_SOURCE_DIR}/thirdparty/libiconv/libcharset/lib/.libs)
+    #LINK_DIRECTORIES(${CMAKE_CURRENT_SOURCE_DIR}/thirdparty/libiconv/lib/.libs)	
     INCLUDE_DIRECTORIES(${ICONV_INCLUDE_DIRS})
 ENDIF(WIN32)
 
@@ -113,13 +113,13 @@ ELSE(WIN32)
         TARGET dmiconv
         POST_BUILD
         COMMAND ${CMAKE_COMMAND} -E copy_if_different
-        ${CMAKE_CURRENT_SOURCE_DIR}/thirdparty/libiconv/lib/.libs/libiconv.so.2.6.1
+        ${CMAKE_CURRENT_SOURCE_DIR}/thirdparty/libiconv/lib/.libs/libiconv.so
         $<TARGET_FILE_DIR:dmiconv>/libiconv.so
         )
     ADD_CUSTOM_COMMAND(
         TARGET dmiconv
         POST_BUILD
         COMMAND ${CMAKE_COMMAND} -E copy_if_different
-        ${CMAKE_CURRENT_SOURCE_DIR}/thirdparty/libiconv/libcharset/lib/.libs/libcharset.so.1.0.0
+        ${CMAKE_CURRENT_SOURCE_DIR}/thirdparty/libiconv/libcharset/lib/.libs/libcharset.so
         $<TARGET_FILE_DIR:dmiconv>/libcharset.so)
 ENDIF(WIN32)
