@@ -30,13 +30,13 @@ private:
     bool ignore_error_;
 };
 
-std::string detect(std::string& input);
+std::string detect(const std::string& input);
 
-std::string toLatin(std::string& in);
-std::string toUtf8(std::string& in);
-std::string toAscii(std::string& in);
-std::string toGbk(std::string& in);
-std::string toGb18030(std::string& in);
+std::string toLatin(const std::string& in);
+std::string toUtf8(const std::string& in);
+std::string toAscii(const std::string& in);
+std::string toGbk(const std::string& in);
+std::string toGb18030(const std::string& in);
 
 }  // namespace iconvpp
 

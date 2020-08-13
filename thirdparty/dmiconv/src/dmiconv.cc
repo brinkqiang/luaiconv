@@ -86,7 +86,7 @@ void iconvpp::converter::check_convert_error() const
     }
 }
 
-std::string iconvpp::detect(std::string& input)
+std::string iconvpp::detect(const std::string& input)
 {
     uchardet_t  handle = uchardet_new();
     char* charset;
@@ -116,7 +116,7 @@ std::string iconvpp::detect(std::string& input)
 }
 
 
-std::string iconvpp::toLatin(std::string& in)
+std::string iconvpp::toLatin(const std::string& in)
 {
     iconvpp::converter conv("iso-8859-1", detect(in), true);
     std::string out;
@@ -124,7 +124,7 @@ std::string iconvpp::toLatin(std::string& in)
     return std::move(out);
 }
 
-std::string iconvpp::toUtf8(std::string& in)
+std::string iconvpp::toUtf8(const std::string& in)
 {
     iconvpp::converter reconv("UTF-8", detect(in), true);
     std::string out;
@@ -132,7 +132,7 @@ std::string iconvpp::toUtf8(std::string& in)
     return std::move(out);
 }
 
-std::string iconvpp::toAscii(std::string& in)
+std::string iconvpp::toAscii(const std::string& in)
 {
     iconvpp::converter conv("ASCII", detect(in), true);
     std::string out;
@@ -140,7 +140,7 @@ std::string iconvpp::toAscii(std::string& in)
     return std::move(out);
 }
 
-std::string iconvpp::toGbk(std::string& in)
+std::string iconvpp::toGbk(const std::string& in)
 {
     iconvpp::converter conv("GBK", detect(in), true);
     std::string out;
@@ -148,7 +148,7 @@ std::string iconvpp::toGbk(std::string& in)
     return std::move(out);
 }
 
-std::string iconvpp::toGb18030(std::string& in)
+std::string iconvpp::toGb18030(const std::string& in)
 {
     iconvpp::converter conv("GB18030", detect(in), true);
     std::string out;

@@ -28,32 +28,32 @@ Cluaiconv::Cluaiconv(sol::this_state L)
 
 }
 
-std::string Cluaiconv::detect(std::string& in)
+std::string Cluaiconv::detect(const std::string& in)
 {
-    return std::move(iconvpp::detect(in));
+    return iconvpp::detect(in);
 }
 
-std::string Cluaiconv::toLatin(std::string& in)
+std::string Cluaiconv::toLatin(const std::string& in)
 {
-    return std::move(iconvpp::toLatin(in));
+    return iconvpp::toLatin(in);
 }
 
-std::string Cluaiconv::toUtf8(std::string& in)
+std::string Cluaiconv::toUtf8(const std::string& in)
 {
     return iconvpp::toUtf8(in);
 }
 
-std::string Cluaiconv::toAscii(std::string& in)
+std::string Cluaiconv::toAscii(const std::string& in)
 {
-    return std::move(iconvpp::toAscii(in));
+    return iconvpp::toAscii(in);
 }
 
-std::string Cluaiconv::toGbk(std::string& in)
+std::string Cluaiconv::toGbk(const std::string& in)
 {
-    return std::move(iconvpp::toGbk(in));
+    return iconvpp::toGbk(in);
 }
 
-std::string Cluaiconv::toGb18030(std::string& in)
+std::string Cluaiconv::toGb18030(const std::string& in)
 {
-    return std::move(iconvpp::toGb18030(in));
+    return iconvpp::toGb18030(in);
 }
