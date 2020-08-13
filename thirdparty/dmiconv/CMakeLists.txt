@@ -98,7 +98,7 @@ ELSE(WIN32)
 
     ADD_EXECUTABLE(dmiconvtest ${DMICONVTEST_SOURCES})
     #TARGET_LINK_LIBRARIES(dmiconvtest dmiconv ${ICONV_LIBRARIES} dmchardet)
-    #TARGET_LINK_LIBRARIES(dmiconvtest dmiconv dmchardet)
+    TARGET_LINK_LIBRARIES(dmiconvtest dmiconv dmchardet)
 
     ADD_CUSTOM_COMMAND(
         TARGET dmiconv
