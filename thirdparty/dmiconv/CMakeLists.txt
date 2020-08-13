@@ -93,12 +93,12 @@ ELSE(WIN32)
     ADD_DEFINITIONS(-DLIBICONV_PLUG)
 
     ADD_LIBRARY(dmiconv ${DMICONV_SOURCES})
-    TARGET_LINK_LIBRARIES(dmiconv iconv charset libuchardet)
+    TARGET_LINK_LIBRARIES(dmiconv libiconv.so libcharset.so libuchardet)
     #TARGET_LINK_LIBRARIES(dmiconv dmchardet)
 
     ADD_EXECUTABLE(dmiconvtest ${DMICONVTEST_SOURCES})
     #TARGET_LINK_LIBRARIES(dmiconvtest dmiconv ${ICONV_LIBRARIES} dmchardet)
-    TARGET_LINK_LIBRARIES(dmiconvtest dmiconv iconv charset libuchardet)
+    TARGET_LINK_LIBRARIES(dmiconvtest dmiconv libiconv.so libcharset.so libuchardet)
 
     ADD_CUSTOM_COMMAND(
         TARGET dmiconv
