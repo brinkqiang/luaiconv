@@ -31,5 +31,5 @@ ELSE(WIN32)
 ENDIF(WIN32)
 
 ModuleImport("dmiconv" "thirdparty/dmiconv")
-LuaModuleImport("${LUA_MODULE}" "luaiconv" "src/luaiconv" "dmiconv")
+LuaModuleImport("${LUA_MODULE}" "luaiconv" "src/luaiconv" "dmiconv iconv charset")
 
