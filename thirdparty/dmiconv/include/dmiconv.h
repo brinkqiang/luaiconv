@@ -37,6 +37,7 @@ std::string toUtf8(std::string& in);
 std::string toAscii(std::string& in);
 std::string toGbk(std::string& in);
 std::string toGb18030(std::string& in);
+
 }  // namespace iconvpp
 
 #endif // __DMICONV_H_INCLUDE__

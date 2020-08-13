@@ -22,32 +22,38 @@
 #include "luaiconv.h"
 #include "dmiconv.h"
 
-std::string detect(std::string& in)
+Cluaiconv::Cluaiconv(sol::this_state L)
+    : m_oState(L)
+{
+
+}
+
+std::string Cluaiconv::detect(std::string& in)
 {
     return std::move(iconvpp::detect(in));
 }
 
-std::string toLatin(std::string& in)
+std::string Cluaiconv::toLatin(std::string& in)
 {
     return std::move(iconvpp::toLatin(in));
 }
 
-std::string toUtf8(std::string& in)
+std::string Cluaiconv::toUtf8(std::string& in)
 {
     return iconvpp::toUtf8(in);
 }
 
-std::string toAscii(std::string& in)
+std::string Cluaiconv::toAscii(std::string& in)
 {
     return std::move(iconvpp::toAscii(in));
 }
 
-std::string toGbk(std::string& in)
+std::string Cluaiconv::toGbk(std::string& in)
 {
     return std::move(iconvpp::toGbk(in));
 }
 
-std::string toGb18030(std::string& in)
+std::string Cluaiconv::toGb18030(std::string& in)
 {
     return std::move(iconvpp::toGb18030(in));
 }

@@ -22,14 +22,23 @@
 #ifndef __LUAICONV_H__
 #define __LUAICONV_H__
 
-#include <string>
+#include "sol.hpp"
 
-std::string detect(std::string& in);
-std::string toLatin(std::string& in);
-std::string toUtf8(std::string& in);
-std::string toAscii(std::string& in);
+class Cluaiconv
+{
+public:
+    Cluaiconv(sol::this_state L);
 
-std::string toGbk(std::string& in);
-std::string toGb18030(std::string& in);
+    static std::string detect(std::string& in);
+    static std::string toLatin(std::string& in);
+    static std::string toUtf8(std::string& in);
+    static std::string toAscii(std::string& in);
+
+    static std::string toGbk(std::string& in);
+    static std::string toGb18030(std::string& in);
+
+private:
+    sol::state_view m_oState;
+};
 
 #endif // __LUAICONV_H__

@@ -21,7 +21,6 @@
 
 #include "luaiconv_module.h"
 #include "luaiconv.h"
-#include "sol.hpp"
 
 namespace lua_module_luaiconv
 {
@@ -30,23 +29,23 @@ static sol::table require_api(sol::this_state L)
     sol::state_view lua(L);
     sol::table module = lua.create_table();
 
-    module.set_function("detect", &detect);
-    module.set_function("toLatin", &toLatin);
-    module.set_function("toUtf8", &toUtf8);
-    module.set_function("toAscii", &toAscii);
-    module.set_function("toGbk", &toGbk);
-    module.set_function("toGb18030", &toGb18030);
+    module.set_function("detect", &Cluaiconv::detect);
+    module.set_function("toLatin", &Cluaiconv::toLatin);
+    module.set_function("toUtf8", &Cluaiconv::toUtf8);
+    module.set_function("toAscii", &Cluaiconv::toAscii);
+    module.set_function("toGbk", &Cluaiconv::toGbk);
+    module.set_function("toGb18030", &Cluaiconv::toGb18030);
 
     return module;
 }
 }
 
-LUAMOD_API int luaopen_luaiconv(lua_State* L)
+LUA_API int luaopen_luaiconv(lua_State* L)
 {
     return sol::stack::call_lua(L, 1, lua_module_luaiconv::require_api);
 }
 
-LUAMOD_API int require_luaiconv(lua_State* L)
+LUA_API int require_luaiconv(lua_State* L)
 {
     luaL_requiref(L, "luaiconv", luaopen_luaiconv, 0);
     printf("lua module: require luaiconv\n");
