@@ -111,15 +111,15 @@ ELSE(WIN32)
 
     ADD_CUSTOM_COMMAND(
         TARGET dmiconv
-        POST_BUILD
+        PRE_LINK
         COMMAND ${CMAKE_COMMAND} -E copy_if_different
         ${CMAKE_CURRENT_SOURCE_DIR}/thirdparty/libiconv/lib/.libs/libiconv.so
-        $<TARGET_FILE_DIR:dmiconv>/libiconv.so
+        $<TARGET_FILE_DIR:dmiconv>/libiconv.so.2
         )
     ADD_CUSTOM_COMMAND(
         TARGET dmiconv
-        POST_BUILD
+        PRE_LINK
         COMMAND ${CMAKE_COMMAND} -E copy_if_different
         ${CMAKE_CURRENT_SOURCE_DIR}/thirdparty/libiconv/libcharset/lib/.libs/libcharset.so
-        $<TARGET_FILE_DIR:dmiconv>/libcharset.so)
+        $<TARGET_FILE_DIR:dmiconv>/libcharset.so.1)
 ENDIF(WIN32)
