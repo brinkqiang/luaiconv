@@ -90,3 +90,5 @@ print(luaiconv.toUtf8(utf8))
 print(luaiconv.toUtf8(utf16))
 print(luaiconv.toUtf8(ebcdic))
 
+print(luaiconv.convert("utf-8", "EBCDIC-CP-ES", ebcdic))
+
