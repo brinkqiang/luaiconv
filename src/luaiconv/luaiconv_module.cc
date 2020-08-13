@@ -35,6 +35,9 @@ static sol::table require_api(sol::this_state L)
     module.set_function("toAscii", &Cluaiconv::toAscii);
     module.set_function("toGbk", &Cluaiconv::toGbk);
     module.set_function("toGb18030", &Cluaiconv::toGb18030);
+    module.set_function("convert", &Cluaiconv::convert);
+
+
 
     return module;
 }

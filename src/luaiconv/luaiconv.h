@@ -30,6 +30,8 @@ public:
     Cluaiconv(sol::this_state L);
 
     static std::string detect(const std::string& in);
+    static std::string convert(const std::string& out_encode, const std::string& in_encode, const std::string& in);
+    
     static std::string toLatin(const std::string& in);
     static std::string toUtf8(const std::string& in);
     static std::string toAscii(const std::string& in);

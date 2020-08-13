@@ -33,6 +33,11 @@ std::string Cluaiconv::detect(const std::string& in)
     return iconvpp::detect(in);
 }
 
+std::string Cluaiconv::convert(const std::string& out_encode, const std::string& in_encode, const std::string& in)
+{
+    return iconvpp::convert(out_encode, in_encode, in);
+}
+
 std::string Cluaiconv::toLatin(const std::string& in)
 {
     return iconvpp::toLatin(in);
