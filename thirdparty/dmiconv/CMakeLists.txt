@@ -98,9 +98,10 @@ ELSE(WIN32)
         PRE_BUILD
         COMMAND ./configure
         COMMAND make
-        COMMAND echo "finish"
+        COMMAND echo "make finish"
         COMMAND ${CMAKE_COMMAND} -E copy_if_different ${CMAKE_CURRENT_SOURCE_DIR}/thirdparty/libiconv/lib/.libs/libiconv.so $<TARGET_FILE_DIR:dmiconv>/libiconv.so.2
         COMMAND ${CMAKE_COMMAND} -E copy_if_different ${CMAKE_CURRENT_SOURCE_DIR}/thirdparty/libiconv/libcharset/lib/.libs/libcharset.so $<TARGET_FILE_DIR:dmiconv>/libcharset.so.1
+        COMMAND echo "copy finish"
         WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/thirdparty/libiconv
         )
 
