@@ -2,7 +2,7 @@
 
 local luaiconv = require("luaiconv")
 
-local test_str = "科学是整理过的知识, 而智慧则是整理过的人生 hello"
+local test_str = "密涅瓦的猫头鹰在黄昏起飞 hello"
 print("[1]" .. luaiconv.detect(test_str))
 print("[2]" .. test_str)
 print("[3]" .. luaiconv.toLatin(test_str))
