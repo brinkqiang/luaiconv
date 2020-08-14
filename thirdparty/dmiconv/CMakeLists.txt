@@ -78,17 +78,10 @@ IF (WIN32)
     ADD_CUSTOM_COMMAND(
 	TARGET dmiconvtest
 	PRE_BUILD
-	COMMAND ${CMAKE_COMMAND} -E copy_if_different
-    ${CMAKE_CURRENT_SOURCE_DIR}/thirdparty/libiconv/win/bin/iconv.dll
-	$<TARGET_FILE_DIR:dmiconvtest>
+	COMMAND ${CMAKE_COMMAND} -E copy_if_different ${CMAKE_CURRENT_SOURCE_DIR}/thirdparty/libiconv/win/bin/iconv.dll $<TARGET_FILE_DIR:dmiconvtest>
+	COMMAND ${CMAKE_COMMAND} -E copy_if_different ${CMAKE_CURRENT_SOURCE_DIR}/thirdparty/libiconv/win/bin/charset.dll $<TARGET_FILE_DIR:dmiconvtest>
     )
-    ADD_CUSTOM_COMMAND(
-	TARGET dmiconvtest
-	PRE_BUILD
-	COMMAND ${CMAKE_COMMAND} -E copy_if_different
-    ${CMAKE_CURRENT_SOURCE_DIR}/thirdparty/libiconv/win/bin/charset.dll
-	$<TARGET_FILE_DIR:dmiconvtest>
-    )
+
 ELSE(WIN32)
     ADD_DEFINITIONS(-DLIBICONV_PLUG)
 
