@@ -6,6 +6,7 @@ INCLUDE(cmake/LuaModule.cmake)
 LIST(APPEND CMAKE_MODULE_PATH ${CMAKE_CURRENT_SOURCE_DIR}/cmake)
 INCLUDE(cmake/ModuleCompileOptions.cmake)
 ModuleSetCompileOptions()
+ModuleSetWinCompilerFlags()
 
 SET(LUA_MODULE lua53)
 SET(LUAICONV_VERSION_MAJOR "1")

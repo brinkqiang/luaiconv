@@ -6,6 +6,7 @@ LIST(APPEND CMAKE_MODULE_PATH ${CMAKE_CURRENT_SOURCE_DIR}/cmake)
 INCLUDE(cmake/ModuleImport.cmake)
 INCLUDE(cmake/ModuleCompileOptions.cmake)
 ModuleSetCompileOptions()
+ModuleSetWinCompilerFlags()
 
 IF (WIN32)
    SET(ICONV_VERSION_STRING "1.11.1")
