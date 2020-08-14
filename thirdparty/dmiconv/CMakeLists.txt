@@ -106,20 +106,9 @@ ELSE(WIN32)
         COMMAND ./configure
         COMMAND make
         COMMAND echo "finish"
+        COMMAND ${CMAKE_COMMAND} -E copy_if_different ${CMAKE_CURRENT_SOURCE_DIR}/thirdparty/libiconv/lib/.libs/libiconv.so $<TARGET_FILE_DIR:dmiconv>/libiconv.so.2
+        COMMAND ${CMAKE_COMMAND} -E copy_if_different ${CMAKE_CURRENT_SOURCE_DIR}/thirdparty/libiconv/libcharset/lib/.libs/libcharset.so $<TARGET_FILE_DIR:dmiconv>/libcharset.so.1
         WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/thirdparty/libiconv
         )
 
-    ADD_CUSTOM_COMMAND(
-        TARGET dmiconv
-        PRE_LINK
-        COMMAND ${CMAKE_COMMAND} -E copy_if_different
-        ${CMAKE_CURRENT_SOURCE_DIR}/thirdparty/libiconv/lib/.libs/libiconv.so
-        $<TARGET_FILE_DIR:dmiconv>/libiconv.so.2
-        )
-    ADD_CUSTOM_COMMAND(
-        TARGET dmiconv
-        PRE_LINK
-        COMMAND ${CMAKE_COMMAND} -E copy_if_different
-        ${CMAKE_CURRENT_SOURCE_DIR}/thirdparty/libiconv/libcharset/lib/.libs/libcharset.so
-        $<TARGET_FILE_DIR:dmiconv>/libcharset.so.1)
 ENDIF(WIN32)
