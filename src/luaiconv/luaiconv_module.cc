@@ -37,8 +37,6 @@ static sol::table require_api(sol::this_state L)
     module.set_function("toGb18030", &Cluaiconv::toGb18030);
     module.set_function("convert", &Cluaiconv::convert);
 
-
-
     return module;
 }
 }
