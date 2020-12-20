@@ -26,7 +26,7 @@ INCLUDE_DIRECTORIES(${CMAKE_CURRENT_SOURCE_DIR}/test)
 IF (WIN32)
    SET(ICONV_VERSION_STRING "1.11.1")
    SET(ICONV_INCLUDE_DIRS "${CMAKE_CURRENT_SOURCE_DIR}/thirdparty/libiconv/win/include")
-   SET(ICONV_LIBRARIES "iconv" "charset")
+   SET(ICONV_LIBRARIES "iconv;charset")
 
    INCLUDE_DIRECTORIES(${ICONV_INCLUDE_DIRS})
    LINK_DIRECTORIES(${CMAKE_CURRENT_SOURCE_DIR}/thirdparty/libiconv/win/lib)
@@ -44,37 +44,9 @@ ELSE(WIN32)
     INCLUDE_DIRECTORIES(${ICONV_INCLUDE_DIRS})
 ENDIF(WIN32)
 
-FILE(GLOB_RECURSE DMICONV_SOURCES
-${CMAKE_CURRENT_SOURCE_DIR}/include/*.cpp
-${CMAKE_CURRENT_SOURCE_DIR}/include/*.cc
-${CMAKE_CURRENT_SOURCE_DIR}/include/*.c
-${CMAKE_CURRENT_SOURCE_DIR}/include/*.hpp
-${CMAKE_CURRENT_SOURCE_DIR}/include/*.h
-
-${CMAKE_CURRENT_SOURCE_DIR}/src/*.cpp
-${CMAKE_CURRENT_SOURCE_DIR}/src/*.cc
-${CMAKE_CURRENT_SOURCE_DIR}/src/*.c
-${CMAKE_CURRENT_SOURCE_DIR}/src/*.hpp
-${CMAKE_CURRENT_SOURCE_DIR}/src/*.h
-)
-
 IF (WIN32)
-    LIST(APPEND DMICONV_SOURCES)
-ENDIF(WIN32)
-
-FILE(GLOB_RECURSE DMICONVTEST_SOURCES
-${CMAKE_CURRENT_SOURCE_DIR}/test/*.cpp
-${CMAKE_CURRENT_SOURCE_DIR}/test/*.cc
-${CMAKE_CURRENT_SOURCE_DIR}/test/*.c
-${CMAKE_CURRENT_SOURCE_DIR}/test/*.hpp
-${CMAKE_CURRENT_SOURCE_DIR}/test/*.h)
-
-IF (WIN32)
-    ADD_LIBRARY(dmiconv STATIC ${DMICONV_SOURCES})
-    TARGET_LINK_LIBRARIES(dmiconv ${ICONV_LIBRARIES} dmchardet)
-
-    ADD_EXECUTABLE(dmiconvtest ${DMICONVTEST_SOURCES})
-    TARGET_LINK_LIBRARIES(dmiconvtest dmiconv ${ICONV_LIBRARIES} dmchardet)
+    DllImportDepends("dmiconv" "src/dmiconv_module" "${ICONV_LIBRARIES};dmchardet")
+    ExeImport("test" "dmiconv;${ICONV_LIBRARIES};dmchardet")
 
     ADD_CUSTOM_COMMAND(
 	TARGET dmiconvtest
@@ -86,13 +58,8 @@ IF (WIN32)
 ELSE(WIN32)
     ADD_DEFINITIONS(-DLIBICONV_PLUG)
 
-    ADD_LIBRARY(dmiconv ${DMICONV_SOURCES})
-    TARGET_LINK_LIBRARIES(dmiconv libiconv.so libcharset.so libuchardet)
-    #TARGET_LINK_LIBRARIES(dmiconv dmchardet)
-
-    ADD_EXECUTABLE(dmiconvtest ${DMICONVTEST_SOURCES})
-    #TARGET_LINK_LIBRARIES(dmiconvtest dmiconv ${ICONV_LIBRARIES} dmchardet)
-    TARGET_LINK_LIBRARIES(dmiconvtest dmiconv libiconv.so libcharset.so libuchardet)
+    DllImportDepends("dmiconv" "src/dmiconv_module" "libiconv.so;libcharset.so;libuchardet")
+    ExeImport("test" "dmiconv;libiconv.so;libcharset.so;libuchardet")
 
     ADD_CUSTOM_COMMAND(
         TARGET dmiconv
