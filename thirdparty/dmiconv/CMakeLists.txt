@@ -45,7 +45,7 @@ ELSE(WIN32)
 ENDIF(WIN32)
 
 IF (WIN32)
-    DllImportDepends("dmiconv" "src/dmiconv_module" "${ICONV_LIBRARIES};dmchardet")
+    LibImportDepends("dmiconv" "src/dmiconv_module" "${ICONV_LIBRARIES};dmchardet")
     ExeImport("test" "dmiconv;${ICONV_LIBRARIES};dmchardet")
 
     ADD_CUSTOM_COMMAND(
