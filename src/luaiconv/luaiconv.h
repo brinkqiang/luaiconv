@@ -22,8 +22,8 @@
 #ifndef __LUAICONV_H__
 #define __LUAICONV_H__
 
-#include "sol.hpp"
 #include <limits>
+#include "sol.hpp"
 
 class Cluaiconv
 {
