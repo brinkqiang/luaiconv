@@ -29,7 +29,7 @@ luaiconv
 ```lua
 local luaiconv = require("luaiconv")
 
-local test_str = "密涅瓦的猫头鹰在黄昏起飞 hello"
+local test_str = "谦逊是藏于土中甜美的根,所有崇高的美德由此发芽滋长 hello"
 print("[1]" .. luaiconv.detect(test_str))
 print("[2]" .. test_str)
 print("[3]" .. luaiconv.toLatin(test_str))
@@ -52,8 +52,8 @@ lua ../script/main.lua
 [4]瀵嗘秴鐡︾殑鐚ご楣板湪榛勬槒璧烽 hello
 [5] hello
 [6]瀵嗘秴鐡︾殑鐚ご楣板湪榛勬槒璧烽 hello
-[7]密涅瓦的猫头鹰在黄昏起飞 hello
-[8]密涅瓦的猫头鹰在黄昏起飞 hello
+[7]谦逊是藏于土中甜美的根,所有崇高的美德由此发芽滋长 hello
+[8]谦逊是藏于土中甜美的根,所有崇高的美德由此发芽滋长 hello
 [9]鐎靛棙绉撮悺锔炬畱閻氼偄銇旀ィ鏉挎躬姒涘嫭妲掔挧鐑筋棧 hello
 [10]密涅瓦的猫头鹰在黄昏起飞 hello
 ```
@@ -61,11 +61,11 @@ linux output
 ```
 ./lua ../script/main.lua
 [1]utf-8
-[2]密涅瓦的猫头鹰在黄昏起飞 hello
+[2]谦逊是藏于土中甜美的根,所有崇高的美德由此发芽滋长 hello
 [3]???????????? hello
-[4]密涅瓦的猫头鹰在黄昏起飞 hello
+[4]谦逊是藏于土中甜美的根,所有崇高的美德由此发芽滋长 hello
 [5]???????????? hello
-[6]密涅瓦的猫头鹰在黄昏起飞 hello
+[6]谦逊是藏于土中甜美的根,所有崇高的美德由此发芽滋长 hello
 [7]èͷӥello
 [8]èͷӥello
 [9]瀵嗘秴鐡︾殑鐚ご楣板湪榛勬槒璧烽 hello
