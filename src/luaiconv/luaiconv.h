@@ -23,6 +23,7 @@
 #define __LUAICONV_H__
 
 #include "sol.hpp"
+#include <limits>
 
 class Cluaiconv
 {
