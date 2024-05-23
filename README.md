@@ -73,6 +73,5 @@ linux output
 ```
 
 ## Contacts
-[![Join the chat](https://badges.gitter.im/brinkqiang/luaiconv/Lobby.svg)](https://gitter.im/brinkqiang/luaiconv)
 
 ## Thanks
